@@ -16,7 +16,10 @@ request({ url: url ,json: true  },(error,response) =>{
 
     if(error){
         console.log('unable to connect to weather api');
-    }else{
+    }else if(response.body.error){
+        console.log('unable to find the location');
+    }
+    else{
 
     console.log(response.body.current.temperature);
     console.log(response.body.current.weather_code);
