@@ -10,10 +10,14 @@ request({url : url , json: true} , (error,response) => {
     // lat --> 1
 
 
+    // error handling
+
     if(error){
         console.log('unable to connect to mapbox api');
     }else if(response.body.message){
         console.log('the link get broke down please re-verify the link!');
+    }else if(response.body.features.length ==0){
+        console.log('unable to find your desired location. try another location');
     }
     else{
     console.log('latitutde of delhi --> ' + response.body.features[0].center[1]);
