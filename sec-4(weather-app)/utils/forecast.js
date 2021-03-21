@@ -13,6 +13,7 @@ const forecast = (address,callback) => {
         }
         else{
             callback(undefined,{
+                place: response.body.location.name,
                 temperature: response.body.current.temperature,
                 type: response.body.current.weather_descriptions[0]
             })
