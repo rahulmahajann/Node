@@ -1,8 +1,8 @@
 const request = require('request')
 
-const forecast = (address,callback) => {
+const forecast = (latitude,longitude,callback) => {
 
-    const url = 'http://api.weatherstack.com/current?access_key=693cd55c6f6769acc9c1728688ac0ae4&query=' + encodeURIComponent(address)  + '&units=s'
+    const url = 'http://api.weatherstack.com/current?access_key=693cd55c6f6769acc9c1728688ac0ae4&query=' +  latitude + ',' +  longitude  + '&units=m'
 
 
     request({url: url , json: true },(error,response) =>{
@@ -13,9 +13,9 @@ const forecast = (address,callback) => {
         }
         else{
             callback(undefined,{
-                place: response.body.location.name,
                 temperature: response.body.current.temperature,
-                type: response.body.current.weather_descriptions[0]
+                weather_type: response.body.current.weather_descriptions[0],
+                precipitation_percent: response.body.current.precip 
             })
         }
     })

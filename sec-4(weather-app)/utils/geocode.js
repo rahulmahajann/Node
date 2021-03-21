@@ -13,7 +13,7 @@ const geocode = (address,callback) => {
             callback('the link got broke down please re-verify the link',undefined)
         }else{
             callback(undefined,{
-                place: response.body.features[0].text,
+                place: response.body.features[0].place_name,
                 latitude: response.body.features[0].center[1],
                 longitude: response.body.features[0].center[0]
             })

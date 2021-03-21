@@ -2,7 +2,7 @@
 
 const request = require('request')
 
-const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/delhi.json?access_token=pk.eyJ1IjoicmFodWxtYWhhamFubiIsImEiOiJja21pNG55cXMwZG92Mm5xdndwcHNvdXlsIn0.ESrPYLF0G3EDv8Y2d_NIZw'
+const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/ladakh.json?access_token=pk.eyJ1IjoicmFodWxtYWhhamFubiIsImEiOiJja21pNG55cXMwZG92Mm5xdndwcHNvdXlsIn0.ESrPYLF0G3EDv8Y2d_NIZw'
 
 request({url : url , json: true} , (error,response) => {
 

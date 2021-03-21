@@ -1,17 +1,27 @@
+// callback chaining!
+
 const geocode = require('./utils/geocode')
 
 const forecast = require('./utils/forecast')
 
-geocode('ladakh',(error,data) => {
+const location = process.argv[2]
+// 2nd argument of argv is the content that we have 
+// written after node __filename__ .
+
+geocode(location,(error,loc_data) => {
 
 
     if(error){
         return console.log(error);
     }
 
-    forecast(data.place,(error,data) => {
-        console.log('error -->',error);  
-        console.log('data -->',data);  
+    forecast(loc_data.latitude,loc_data.longitude,(error,data) => {
+
+        if(error){
+            return console.log(error);
+        }
+        console.log(loc_data.place);
+        console.log('weather details -->',data);  
     })
 
 })
