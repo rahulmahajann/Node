@@ -7,22 +7,32 @@ const app = express()
 
 const publicpath = path.join(__dirname,'../public')
 
+// to set up hbs
+app.set('view engine','hbs')
+
 app.use(express.static(publicpath))
 
 app.get('/',(req,res) => {
-    res.send('rahul mahajan')
+    res.render('index',{
+        title: 'weather',
+        name: 'rahul mahajan'
+    })
 })
 
-app.get('/connectwdme', (req,res) => {
-    res.send('connect with me at 9625281237')
-})
+// app.get('/connectwdme', (req,res) => {
+//     res.send('connect with me at 9625281237')
+// })
 
 app.get('/about', (req,res) => {
-    res.send('cse from ggsipu')
+    res.render('about')
 })
 
 app.get('/weather', (req,res) => {
-    res.send('<h1>weather details!</h1>')
+    res.render('weather',{
+        temp: '30' ,
+        precip: '0%',
+        descrip: 'cloudy'
+    })
 })
 
 app.listen(3000, () => {
