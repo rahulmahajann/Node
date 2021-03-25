@@ -7,10 +7,16 @@ const app = express()
 
 const publicpath = path.join(__dirname,'../public')
 
+
 // to set up hbs
 app.set('view engine','hbs')
-
 app.use(express.static(publicpath))
+
+
+// to set up a random path for views!
+const viewspath = path.join(__dirname, '../templates')
+app.set('views',viewspath)
+
 
 
 app.get('/',(req,res) => {
@@ -37,5 +43,5 @@ app.get('/weather', (req,res) => {
 })
 
 app.listen(5000, () => {
-    console.log('app running at port 3000');
+    console.log('app running at port 5000');
 })
