@@ -53,6 +53,17 @@ app.get('/weather', (req,res) => {
     })
 })
 
+app.get('/about/*', (req,res) => {
+    res.send('about not found')
+})
+
+app.get('*', (req,res) => {
+    res.render('404',{
+        name: 'rahul mahajan',
+        title: 'Error Page'
+    })
+})
+
 app.listen(5000, () => {
     console.log('app running at port 5000');
 })
