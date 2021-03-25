@@ -87,12 +87,12 @@ for i in range(int(input())):
 #         i+=1
     
 #     #Already beautiful
-    if(i==len(snum)):
-        return [num,num]
-    else:
-        m = getM(snum,i)
-        n = getP(snum)
-        return [m,n]
+   #  if(i==len(snum)):
+   #      return [num,num]
+   #  else:
+   #      m = getM(snum,i)
+   #      n = getP(snum)
+   #      return [m,n]
 
 
 # for i,n in enumerate(digits):
