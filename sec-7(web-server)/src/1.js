@@ -27,13 +27,10 @@ hbs.registerPartials(partialpaths)
 
 app.get('/',(req,res) => {
     res.render('index',{
-        title: 'Main Page',
+        title: 'Weather Details',
+        content:'Get the latest weather details here',
         name: 'rahul mahajan'
     })
-})
-
-app.get('/connectwdme', (req,res) => {
-    res.send('connect with me at 9625281237')
 })
 
 app.get('/about', (req,res) => {
@@ -43,12 +40,9 @@ app.get('/about', (req,res) => {
     })
 })
 
-app.get('/weather', (req,res) => {
-    res.render('weather',{
-        temp: '30' ,
-        precip: '0%',
-        descrip: 'cloudy',
-        title: 'Weather Details',
+app.get('/help', (req,res) => {
+    res.render('help',{
+        title: 'Help Section',
         name: 'Rahul Mahajan'
     })
 })
@@ -60,7 +54,7 @@ app.get('/about/*', (req,res) => {
 app.get('*', (req,res) => {
     res.render('404',{
         name: 'rahul mahajan',
-        title: 'Error Page'
+        title: '404'
     })
 })
 
