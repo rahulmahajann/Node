@@ -12,6 +12,7 @@ app.set('view engine','hbs')
 
 app.use(express.static(publicpath))
 
+
 app.get('/',(req,res) => {
     res.render('index',{
         title: 'weather',
@@ -35,6 +36,6 @@ app.get('/weather', (req,res) => {
     })
 })
 
-app.listen(3000, () => {
+app.listen(5000, () => {
     console.log('app running at port 3000');
 })
