@@ -40,15 +40,40 @@ app.get('/about', (req,res) => {
     })
 })
 
+app.get('/product',(req,res) => {
+
+    if(!req.query.search){
+        return res.send({
+            error: 'You have to search something!'
+        })
+    }
+
+    console.log(req.query.rating);
+    res.send({
+        products: []
+    })
+})
+
+
+app.get('/weather', (req,res) => {
+
+    if(!req.query.search){
+        return res.send('Please enter the valid location for getting weather details!')
+    }
+
+    res.send({
+        forecast: "it's hot sunny day", 
+        place: req.query.search,
+        temp: '32 degs'
+    })
+
+})
+
 app.get('/help', (req,res) => {
     res.render('help',{
         title: 'Help Section',
         name: 'Rahul Mahajan'
     })
-})
-
-app.get('/about/*', (req,res) => {
-    res.send('about not found')
 })
 
 app.get('*', (req,res) => {
