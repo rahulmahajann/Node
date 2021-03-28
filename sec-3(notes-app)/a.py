@@ -154,3 +154,55 @@
 # 2 1 3 4
 
 
+try:
+   for _ in range(int(input())):
+      n,q=map(int,input().split())
+      a=list(map(int,input().split()))
+      print('1 2 3')
+      b=3
+      c=int(input())
+      if(c==2):
+         a.append(1)
+         a.append(2)
+         a.append(3)
+      elif(c==3):
+         a.append(1)
+         a.append(3)
+         a.append(2)
+      else:
+         a.append(2)
+         a.append(1)
+         a.append(3)
+      for i in range(4,n+1):
+         x=0
+         y=b-1
+         while(x<y):
+            mead=x+((y-x)//2)
+            print(a[mead],' ',a[mead+1],' ',i)
+            c=int(input())
+            if(c==a[mead]):
+               y=mead
+            elif(c==a[mead+1]):
+               x=mead+1
+            else:
+               a.insert(a[0]+mead+1,i)
+               b+=1
+               break
+         if(b!=i):
+            if(x==0):
+               a.insert(a[0],i)
+            else:
+               a.append(i)
+            
+            b+=1
+      ans=[]   
+      for _ in a:
+         ans.append(str(_))
+      
+      print(' '.join(ans))
+
+      c=int(input()):
+      if(c==-1):
+         break
+except:
+   pass
