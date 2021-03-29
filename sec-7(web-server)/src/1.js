@@ -64,7 +64,7 @@ app.get('/weather', (req,res) => {
         return res.send('Please enter the valid location for getting weather details!')
     }
 
-    geocode(req.query.search,(error,{ latitude, longitude, location }) => {
+    geocode(req.query.search,(error,{ latitude, longitude, location } = {}) => {
 
         if(error){
             return res.send({error})
