@@ -1,6 +1,10 @@
 const path = require('path')
 const express = require('express')
+const bodyParser = require('body-parser')
 const app = express()
+app.use(bodyParser.urlencoded({extended: true}))
+
+
 
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
@@ -64,6 +68,8 @@ app.get('/weather', (req,res) => {
         return res.send('Please enter the valid location for getting weather details!')
     }
 
+    console.log(req.body.locat);
+
     geocode(req.query.search,(error,{ latitude, longitude, location } = {}) => {
 
         if(error){
@@ -100,6 +106,6 @@ app.get('*', (req,res) => {
     })
 })
 
-app.listen(5000, () => {
-    console.log('app running at port 5000');
+app.listen(769, () => {
+    console.log('app running at port 769');
 })
