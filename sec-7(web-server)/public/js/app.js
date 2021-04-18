@@ -12,7 +12,7 @@ weather_form.addEventListener('submit',(e) => {
     f_msg.textContent='loading....'
     s_msg.textContent=''
 
-    fetch('http://localhost:769/weather?search=' + location).then((response) => {
+    fetch('/weather?search=' + location).then((response) => {
     response.json().then((data) => {
         if(data.error){
             f_msg.textContent=data.error
@@ -20,7 +20,7 @@ weather_form.addEventListener('submit',(e) => {
             f_msg.textContent=data.area
             s_msg.textContent='its currently ' + data.forecast.weather_type + ' in ' + data.area
             console.log(data.location)
-            console.log('its currently ' + data.forecast.weather_type + ' in ' + data.area);
+            console.log('its currently ' + data.forecast.weather_type + ' in ' + data.area + '. While, Temperature in ' + data.area + ' is ' + data.forecast.temperature + 'degC .');
         }
     })
     })

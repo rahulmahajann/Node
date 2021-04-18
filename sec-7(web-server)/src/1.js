@@ -2,6 +2,10 @@ const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
+
+
+const port = process.env.PORT || 3000
+
 app.use(bodyParser.urlencoded({extended: true}))
 
 
@@ -106,6 +110,6 @@ app.get('*', (req,res) => {
     })
 })
 
-app.listen(769, () => {
-    console.log('app running at port 769');
+app.listen(port, () => {
+    console.log('app running at port ' + port);
 })
