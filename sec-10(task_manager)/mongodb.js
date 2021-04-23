@@ -2,11 +2,19 @@
 
 
 const mongodb = require('mongodb')
-
 const mongoclient = mongodb.MongoClient
+const objectid = mongodb.ObjectID
+
+                // destructuring 
+// const {mongoclient , objectid} = require('mongodb')
 
 const connectionUrl = 'mongodb://127.0.0.1:27017'
 const databaseName = 'task_manager'
+
+// const id = new objectid()
+// console.log(id.id.length);
+// console.log(id.toHexString().length);
+// console.log(id.getTimestamp());
 
 mongoclient.connect(connectionUrl , {useUnifiedTopology: true} , (error,client) => {
     if(error){
@@ -18,8 +26,9 @@ mongoclient.connect(connectionUrl , {useUnifiedTopology: true} , (error,client) 
     const db = client.db(databaseName)
 
     db.collection('users').insertOne({
-        name: 'rahul',
-        age:19
+        name: 'mehul',
+        age:20,
+        pob: 'delhi'
     }, (error,result) => {
         if(error){
             return console.log('inable to insert user');
@@ -63,6 +72,18 @@ mongoclient.connect(connectionUrl , {useUnifiedTopology: true} , (error,client) 
         }
 
         console.log(result.ops);
+    })
+
+    db.collection('users').findOne({
+        name: 'mehul',
+        pob: 'delhi'
+    }, (error,user) => {
+        if(error){
+            return console.log('sorry unable to find the data');
+        }
+
+        console.log(user);
+
     })
 
 })  
