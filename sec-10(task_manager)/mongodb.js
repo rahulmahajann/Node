@@ -75,11 +75,41 @@ mongoclient.connect(connectionUrl , {useUnifiedTopology: true} , (error,client) 
     })
 
     db.collection('users').findOne({
-        name: 'mehul',
-        pob: 'delhi'
+        name: 'yukti',
+        pob: 'gzb'
     }, (error,user) => {
         if(error){
             return console.log('sorry unable to find the data');
+        }
+
+        console.log(user);
+
+    })
+
+            // find all the related data
+    db.collection('users').find({
+        pob: 'delhi'
+    }).toArray((error,user) => {
+        console.log(user);
+    })
+
+    db.collection('task').findOne({
+        _id: objectid("608340a8c10b0523989e90ff")
+    }, (error,user) => {
+        if(error){
+            return console.log('sorry data not found');
+        }
+
+        console.log(user);
+
+    })
+
+
+    db.collection('task').find({
+        completed: false
+    }).toArray((error,user) => {
+        if(error){
+            return console.log('sorry data not found');
         }
 
         console.log(user);
