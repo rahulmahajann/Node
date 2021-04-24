@@ -25,10 +25,12 @@ mongoclient.connect(connectionUrl , {useUnifiedTopology: true} , (error,client) 
 
     const db = client.db(databaseName)
 
+             //insert
+
     db.collection('users').insertOne({
         name: 'rahul',
         age:20,
-        pob: 'delhi'
+        pob: 'gzb'
     }, (error,result) => {
         if(error){
             return console.log('inable to insert user');
@@ -74,6 +76,8 @@ mongoclient.connect(connectionUrl , {useUnifiedTopology: true} , (error,client) 
         console.log(result.ops);
     })
 
+    
+             //find
     db.collection('users').findOne({
         name: 'yukti',
         pob: 'gzb'
@@ -116,7 +120,7 @@ mongoclient.connect(connectionUrl , {useUnifiedTopology: true} , (error,client) 
 
     })
 
-               // promises
+               //promises       update
     db.collection('users').updateOne({
         _id: new objectid("60848e6f9e77d138046581b7")
     }, {
@@ -159,6 +163,25 @@ mongoclient.connect(connectionUrl , {useUnifiedTopology: true} , (error,client) 
         $set: {
             completed: true
         }
+    }).then( (result) => {
+        console.log(result);
+    }).catch( (error) => {
+        console.log(error);
+    })
+
+
+             //delete
+    db.collection('users').deleteOne({
+        pob: 'gzb'
+    }).then( (result) => {
+        console.log(result);
+    }).catch( (error) => {
+        console.log(error);
+    })
+
+
+    db.collection('task').deleteOne({
+        description: 'create notes'
     }).then( (result) => {
         console.log(result);
     }).catch( (error) => {
